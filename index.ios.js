@@ -15,7 +15,8 @@ var {
 var func = () => {};
 
 var obj = {
-  // This causes "SyntaxError: Unexpected token ["
+  // This causes "SyntaxError: Unexpected token [" but only in the
+  // Chrome debugging tools.
   ['foo']: 'bar'
 };
 
@@ -23,7 +24,10 @@ var ReactBrokenObjectTransform = React.createClass({
   render: () => {
     return (
       <View style={styles.container}>
-        <Text style={{ fontSize: 20, textAlign: 'center' }}>
+        <Text>
+          This is the value of obj.foo: {obj.foo}
+        </Text>
+        <Text>
           Cmd+Control+Z to bring up Dev tools, then click Enable Debugging
         </Text>
       </View>
